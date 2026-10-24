@@ -411,3 +411,5 @@ details.acc .stack{padding-bottom:8px}
 .logo-cm .m{font-style:italic;letter-spacing:-.01em;margin-left:.1em}
 .brandbar{grid-column:2;grid-row:1;justify-self:center}
 .avatar{grid-column:3;grid-row:1}
+
+.shell:has(#v-map[hidden]) .brandbar{visibility:hidden}
