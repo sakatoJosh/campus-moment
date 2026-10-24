@@ -379,3 +379,13 @@ details.acc .stack{padding-bottom:8px}
 .actions .row{gap:8px}
 .actions .row .btn{flex:1}
 .actions .row .btn + .btn{border-left:1px solid var(--glass-line)}
+
+.map-top{display:grid;grid-template-columns:40px minmax(0,1fr) 40px;align-items:center;column-gap:8px;z-index:2}
+.logo{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;grid-column:1;grid-row:1;flex:none;background:var(--ink);color:var(--bg);box-shadow:0 8px 20px rgba(0,0,0,.28)}
+.logo svg{width:22px;height:22px;display:block}
+.brandbar{grid-column:2;grid-row:1;justify-self:center;display:flex;align-items:center;justify-content:center;height:40px;padding:0 14px;max-width:100%;pointer-events:none}
+.wordmark{font-size:14px;font-weight:500;letter-spacing:-.02em;line-height:1;white-space:nowrap}
+.avatar{grid-column:3;grid-row:1}
+.gate .box{gap:24px;margin-top:4vh}
+.gate .logo{width:52px;height:52px;margin-bottom:4px}
+.gate .logo svg{width:28px;height:28px}
