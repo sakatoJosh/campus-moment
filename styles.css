@@ -399,3 +399,15 @@ details.acc .stack{padding-bottom:8px}
 .gate .logo{width:auto;height:auto;margin:0 0 12px;border-radius:0;background:none;box-shadow:none}
 .gate .logo-cm{line-height:.58}
 .gate .logo-cm .c,.gate .logo-cm .m{font-size:42px}
+
+.view{padding:calc(env(safe-area-inset-top,0px) + 68px) 22px calc(var(--nav-h) + var(--nav-pad) + env(safe-area-inset-bottom,0px) + 24px)}
+.view-map{padding:0}
+.appbar{position:absolute;left:16px;right:16px;top:calc(env(safe-area-inset-top,0px) + 14px);display:grid;grid-template-columns:auto minmax(0,1fr) 40px;align-items:center;column-gap:10px;pointer-events:none;z-index:25}
+.appbar>*{pointer-events:auto}
+.logo{display:flex;align-items:center;height:40px;width:auto;grid-column:1;grid-row:1;color:var(--ink);background:none;border:0;border-radius:0;box-shadow:none}
+.logo svg{display:none}
+.logo-cm{display:flex;flex-direction:column;justify-content:center;line-height:.6;font-family:var(--font);user-select:none;letter-spacing:-.06em}
+.logo-cm .c,.logo-cm .m{display:block;line-height:.6;font-size:22px;font-weight:600;color:var(--ink)}
+.logo-cm .m{font-style:italic;letter-spacing:-.01em;margin-left:.1em}
+.brandbar{grid-column:2;grid-row:1;justify-self:center}
+.avatar{grid-column:3;grid-row:1}
