@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0A0A0A">
+<title>Campus Moment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="shell" id="shell">
+
+  <!-- MAP -->
+  <section id="v-map" class="view view-map" aria-label="Campus map">
+    <canvas id="cv-map" aria-label="SJSU campus map. Drag to move, pinch to zoom, tap a pin or building."></canvas>
+    <div class="map-top">
+      <div class="brandbar">
+        <span class="wordmark">Campus Moment</span>
+        <span class="tag">Demo</span>
+      </div>
+      <button class="avatar" id="me" data-act="account" aria-label="Account"></button>
+    </div>
+    <div class="scroller" id="mapfilters" role="group" aria-label="Filter reports"></div>
+    <div class="mapctl" id="mapctl">
+      <button class="iconbtn" data-act="zoom" data-m="map" data-d="1" aria-label="Zoom in">+</button>
+      <button class="iconbtn" data-act="zoom" data-m="map" data-d="-1" aria-label="Zoom out">&minus;</button>
+      <button class="iconbtn" data-act="flat" data-m="map" aria-label="Switch 2D and 3D" id="b-flat">2D</button>
+      <button class="iconbtn" data-act="resetview" data-m="map" aria-label="Reset view" id="b-compass"></button>
+    </div>
+    <div class="legend" id="legend">
+      <span class="s-reported"><i class="dot"></i>Reported</span>
+      <span class="s-verified"><i class="dot"></i>Verified</span>
+      <span class="s-assigned"><i class="dot"></i>Assigned</span>
+      <span class="s-fixed"><i class="dot"></i>Fixed</span>
+    </div>
+    <div class="peek" id="peek" hidden></div>
+  </section>
+
+  <!-- REPORTS -->
+  <section id="v-reports" class="view" hidden>
+    <div class="page-head rv">
+      <span class="kicker">Infrastructure</span>
+      <h1>Reports</h1>
+      <p>What students flagged around campus. File one in under a minute.</p>
+    </div>
+    <div class="seg rv" id="rp-seg" role="group" aria-label="Reports view" style="margin-bottom:22px">
+      <button data-act="rsub" data-s="new" aria-pressed="true">New</button>
+      <button data-act="rsub" data-s="open" aria-pressed="false">Open<span class="count" id="c-open"></span></button>
+      <button data-act="rsub" data-s="board" aria-pressed="false">Leaders</button>
+    </div>
+    <input type="file" id="photo-input" accept="image/*" capture="environment" hidden>
+    <div id="rp-new" class="stack"></div>
+    <div id="rp-open" class="stack" hidden></div>
+    <div id="rp-board" class="stack" hidden></div>
+  </section>
+
+  <!-- RIDE -->
+  <section id="v-ride" class="view" hidden>
+    <div class="page-head rv">
+      <span class="kicker">Pavement</span>
+      <h1>Ride</h1>
+      <p>Motion sensors find potholes while you ride. Confirm each hit afterwards.</p>
+    </div>
+    <div class="stack">
+      <div class="seg rv" id="modeseg" role="group" aria-label="Phone position">
+        <button data-act="mode" data-m="mounted" aria-pressed="true">Handlebar</button>
+        <button data-act="mode" data-m="pocket" aria-pressed="false">Pocket</button>
+      </div>
+      <div class="actions rv">
+        <button class="btn primary block" id="b-start" data-act="start">Start ride</button>
+        <button class="btn primary block" id="b-stop" data-act="stop" hidden>End ride</button>
+        <div class="row">
+          <button class="btn secondary grow" id="b-demo" data-act="demo">Demo ride</button>
+          <button class="button secondary grow" id="b-sim" data-act="sim">Simulate 3</buttton>
+       </div>
+      </div>
+      <p class="note" id="ridemsg"></p>
+      <div id="ridelive" class="stack" hidden>
+        <div class="metrics">
+          <div class="stat"><b id="st-speed">0.0</b><span>mph</span></div>
+          <div class="stat"><b id="st-dist">0</b><span>meters</span></div>
+          <div class="stat"><b id="st-time">0:00</b><span>time</span></div>
+          <div class="stat"><b id="st-ev">0</b><span>hits</span></div>
+          <div class="stat"><b id="st-rej">0</b><span>ignored</span></div>
+        </div>
+        <canvas id="graph" aria-label="Live motion graph"></canvas>
+      </div>
+      <div class="mapbox rv"><canvas id="cv-ride" aria-label="Ride map"></canvas></div>
+      <div id="review" class="stack"></div>
+      <div id="spots" class="stack"></div>
+      <details class="card acc rv">
+        <summary>Calibrate GPS <svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <div class="stack" style="margin-top:4px">
+          <p class="note">Stand where 7th Street Paseo meets Paseo de San Carlos, then tap. This removes any GPS offset on the map.</p>
+          <button class="btn secondary sm" data-act="calibrate" style="align-self:flex-start">Calibrate here</button>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- FEED -->
+  <section id="v-feed" class="view" hidden>
+    <div class="page-head rv">
+      <span class="kicker">Campus</span>
+      <h1>Feed</h1>
+      <p>Notes from students, and what is happening on campus right now.</p>
+    </div>
+    <div class="seg rv" id="fd-seg" role="group" aria-label="Feed view" style="margin-bottom:22px">
+      <button data-act="fsub" data-s="posts" aria-pressed="true">Posts</button>
+      <button data-act="fsub" data-s="live" aria-pressed="false">Right now</button>
+    </div>
+    <div id="fd-posts" class="stack"></div>
+    <div id="fd-live" class="stack" hidden></div>
+  </section>
+
+    <button class="btn primary fab" id="fab-post" data-act="newpost" hidden>
+      <svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>New post
+    </button>
+
+  <nav class="nav" id="tabs" role="tablist" aria-label="Sections">
+    <span class="ind" id="navind"></span>
+    <button role="tab" data-act="tab" data-t="reports" aria-selected="false"></button>
+    <button role="tab" data-act="tab" data-t="ride" aria-selected="false"></button>
+    <button role="tab" data-act="tab" data-t="feed" aria-selected="false"></button>
+    <button role="tab" data-act="tab" data-t="map" aria-selected="true"></button>
+  </nav>
+
+  <div id="sheet" class="sheet-wrap" hidden></div>
+  <div id="gate" class="gate" hidden></div>
+  <div id="toast" class="toast" hidden></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="campus.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
