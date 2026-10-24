@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400;1,600&display=swap">
-<link rel="stylesheet" href="styles.css?v=cm6">
+<link rel="stylesheet" href="styles.css?v=cm7">
 </head>
 <body>
 <div class="shell" id="shell">
@@ -17,15 +17,6 @@
   <!-- MAP -->
   <section id="v-map" class="view view-map" aria-label="Campus map">
     <canvas id="cv-map" aria-label="SJSU campus map. Drag to move, pinch to zoom, tap a pin or building."></canvas>
-    <div class="map-top">
-      <span class="logo" role="img" aria-label="Campus Moment">
-        <span class="logo-cm" aria-hidden="true"><span class="c">C</span><span class="m">M</span></span>
-      </span>
-      <div class="brandbar">
-        <span class="wordmark">Campus Moment</span>
-      </div>
-      <button class="avatar" id="me" data-act="account" aria-label="Account"></button>
-    </div>
     <div class="scroller" id="mapfilters" role="group" aria-label="Filter reports"></div>
     <div class="mapctl" id="mapctl">
       <button class="iconbtn" data-act="zoom" data-m="map" data-d="1" aria-label="Zoom in">+</button>
@@ -77,7 +68,7 @@
         <button class="btn primary block" id="b-stop" data-act="stop" hidden>End ride</button>
         <div class="row">
           <button class="btn secondary grow" id="b-demo" data-act="demo">Demo ride</button>
-          <button class="btn secondary grow" id="b-sim" data-act="sim">Simulate 3</button>
+          <buttton class="btn secondary grow" id="b-sim" data-act="sim">Simulate 3</button>
         </div>
       </div>
       <p class="note" id="ridemsg"></p>
@@ -97,7 +88,7 @@
       <details class="card acc rv">
         <summary>Calibrate GPS <svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
         <div class="stack" style="margin-top:4px">
-          <p class="note">Stand where 7th Street Paseo meets Paseo de San Carlos, then tap. This removes any GPS offset on the map.</p>
+          <p>Stand where 7th Street Paseo meets Paseo de San Carlos, then tap. This removes any GPS offset on the map.</p>
           <button class="btn secondary sm" data-act="calibrate" style="align-self:flex-start">Calibrate here</button>
         </div>
       </details>
@@ -123,6 +114,16 @@
       <svg class="ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>New post
     </button>
 
+  <div class="appbar" id="appbar">
+    <span class="logo" role="img" aria-label="Campus Moment">
+      <span class="logo-cm" aria-hidden="true"><span class="c">C</span><span class="m">M</span></span>
+    </span>
+    <div class="brandbar" id="brandbar">
+      <span class="wordmark">Campus Moment</span>
+    </div>
+    <button class="avatar" id="me" data-act="account" aria-label="Account"></button>
+  </div>
+
   <nav class="nav" id="tabs" role="tablist" aria-label="Sections">
     <span class="ind" id="navind"></span>
     <button role="tab" data-act="tab" data-t="reports" aria-selected="false"></button>
@@ -138,6 +139,6 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="campus.js"></script>
-<script src="app.js"></script>
+<script src="app.js?v=cm7"></script>
 </body>
 </html>
